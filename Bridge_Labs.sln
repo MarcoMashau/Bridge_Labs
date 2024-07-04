@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BridgeLabsShop.Web", "BridgeLabsShop.Web\BridgeLabsShop.Web.csproj", "{29C633AA-512E-4E12-BDD3-FDE0E0EA86FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BridgeLabsShop.Api", "BridgeLabsShop.Api\BridgeLabsShop.Api.csproj", "{A582ABB0-FC82-43DE-BD1C-414BA0C5B8B6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29C633AA-512E-4E12-BDD3-FDE0E0EA86FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29C633AA-512E-4E12-BDD3-FDE0E0EA86FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29C633AA-512E-4E12-BDD3-FDE0E0EA86FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29C633AA-512E-4E12-BDD3-FDE0E0EA86FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A582ABB0-FC82-43DE-BD1C-414BA0C5B8B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A582ABB0-FC82-43DE-BD1C-414BA0C5B8B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A582ABB0-FC82-43DE-BD1C-414BA0C5B8B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A582ABB0-FC82-43DE-BD1C-414BA0C5B8B6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CC2A84F3-0657-4275-85C0-4721CA742D83}
+	EndGlobalSection
+EndGlobal

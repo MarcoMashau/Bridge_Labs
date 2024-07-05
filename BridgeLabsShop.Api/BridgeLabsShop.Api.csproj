@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BridgeLabsShop.Models\BridgeLabsShop.Models.csproj" />
     <ProjectReference Include="..\BridgeLabsShop.Web\BridgeLabsShop.Web.csproj" />
   </ItemGroup>
 

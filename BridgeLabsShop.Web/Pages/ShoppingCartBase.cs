@@ -22,14 +22,15 @@ namespace BridgeLabsShop.Web.Pages
 
         public string ErrorMessage { get; set; }
 
-        //    protected string TotalPrice { get; set; }
-        //    protected int TotalQuantity { get; set; }
+        protected string TotalPrice { get; set; }
+        protected int TotalQuantity { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
             try
             {
                 ShoppingCartItems = await ShoppingCartService.GetItems(HardCoded.UserId);
+               CalculateCartSummaryTotals();
                // CartChanged();
             }
             catch (Exception ex)
@@ -43,52 +44,53 @@ namespace BridgeLabsShop.Web.Pages
             var cartItemDto = await ShoppingCartService.DeleteItem(id);
 
             await RemoveCartItem(id);
+           CalculateCartSummaryTotals();
          //   CartChanged();
 
         }
 
-        //    protected async Task UpdateQtyCartItem_Click(int id, int qty)
-        //    {
-        //        try
-        //        {
-        //            if (qty > 0)
-        //            {
-        //                var updateItemDto = new CartItemQtyUpdateDto
-        //                {
-        //                    CartItemId = id,
-        //                    Qty = qty
-        //                };
+        protected async Task UpdateQtyCartItem_Click(int id, int qty)
+        {
+            try
+            {
+                if (qty > 0)
+                {
+                    var updateItemDto = new CartItemQtyUpdateDto
+                    {
+                        CartItemId = id,
+                        Qty = qty
+                    };
 
-        //                var returnedUpdateItemDto = await this.ShoppingCartService.UpdateQty(updateItemDto);
+                    var returnedUpdateItemDto = await this.ShoppingCartService.UpdateQty(updateItemDto);
 
-        //                await UpdateItemTotalPrice(returnedUpdateItemDto);
+                    await UpdateItemTotalPrice(returnedUpdateItemDto);
 
-        //                CartChanged();
+                   // CartChanged();
 
-        //                await MakeUpdateQtyButtonVisible(id, false);
+                   // await MakeUpdateQtyButtonVisible(id, false);
 
 
-        //            }
-        //            else
-        //            {
-        //                var item = this.ShoppingCartItems.FirstOrDefault(i => i.Id == id);
+                }
+                else
+                {
+                    var item = this.ShoppingCartItems.FirstOrDefault(i => i.Id == id);
 
-        //                if (item != null)
-        //                {
-        //                    item.Qty = 1;
-        //                    item.TotalPrice = item.Price;
-        //                }
+                    if (item != null)
+                    {
+                        item.Qty = 1;
+                        item.TotalPrice = item.Price;
+                    }
 
-        //            }
+                }
 
-        //        }
-        //        catch (Exception)
-        //        {
+            }
+            catch (Exception)
+            {
 
-        //            throw;
-        //        }
+                throw;
+            }
 
-        //    }
+        }
 
         //    protected async Task UpdateQty_Input(int id)
         //    {
@@ -100,32 +102,32 @@ namespace BridgeLabsShop.Web.Pages
         //        await Js.InvokeVoidAsync("MakeUpdateQtyButtonVisible", id, visible);
         //    }
 
-        //    private async Task UpdateItemTotalPrice(CartItemDto cartItemDto)
-        //    {
-        //        var item = GetCartItem(cartItemDto.Id);
+        private async Task UpdateItemTotalPrice(CartItemDto cartItemDto)
+        {
+            var item = GetCartItem(cartItemDto.Id);
 
-        //        if (item != null)
-        //        {
-        //            item.TotalPrice = cartItemDto.Price * cartItemDto.Qty;
-        //        }
+            if (item != null)
+            {
+                item.TotalPrice = cartItemDto.Price * cartItemDto.Qty;
+            }
 
-        //        await ManageCartItemsLocalStorageService.SaveCollection(ShoppingCartItems);
+          //  await ManageCartItemsLocalStorageService.SaveCollection(ShoppingCartItems);
 
-        //    }
-        //    private void CalculateCartSummaryTotals()
-        //    {
-        //        SetTotalPrice();
-        //        SetTotalQuantity();
-        //    }
+        }
+        private void CalculateCartSummaryTotals()
+        {
+            SetTotalPrice();
+            SetTotalQuantity();
+        }
 
-        //    private void SetTotalPrice()
-        //    {
-        //        TotalPrice = this.ShoppingCartItems.Sum(p => p.TotalPrice).ToString("C");
-        //    }
-        //    private void SetTotalQuantity()
-        //    {
-        //        TotalQuantity = this.ShoppingCartItems.Sum(p => p.Qty);
-        //    }
+        private void SetTotalPrice()
+        {
+            TotalPrice = this.ShoppingCartItems.Sum(p => p.TotalPrice).ToString("C");
+        }
+        private void SetTotalQuantity()
+        {
+            TotalQuantity = this.ShoppingCartItems.Sum(p => p.Qty);
+        }
 
         private CartItemDto GetCartItem(int id)
         {

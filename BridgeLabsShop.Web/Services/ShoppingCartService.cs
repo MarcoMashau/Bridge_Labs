@@ -1,5 +1,6 @@
 ﻿using BridgeLabsShop.Models.Dtos;
 using BridgeLabsShop.Web.Services.Contracts;
+using Newtonsoft.Json;
 using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -94,35 +95,35 @@ namespace BridgeLabsShop.Web.Services
             }
         }
 
-        //public void RaiseEventOnShoppingCartChanged(int totalQty)
-        //{
-        //    if (OnShoppingCartChanged != null)
-        //    {
-        //        OnShoppingCartChanged.Invoke(totalQty);
-        //    }
-        //}
+        public void RaiseEventOnShoppingCartChanged(int totalQty)
+        {
+            if (OnShoppingCartChanged != null)
+            {
+                OnShoppingCartChanged.Invoke(totalQty);
+            }
+        }
 
-        //public async Task<CartItemDto> UpdateQty(CartItemQtyUpdateDto cartItemQtyUpdateDto)
-        //{
-        //    try
-        //    {
-        //        //var jsonRequest = JsonConvert.SerializeObject(cartItemQtyUpdateDto);
-        //        //var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json-patch+json");
+        public async Task<CartItemDto> UpdateQty(CartItemQtyUpdateDto cartItemQtyUpdateDto)
+        {
+            try
+            {
+                var jsonRequest = JsonConvert.SerializeObject(cartItemQtyUpdateDto);
+                var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json-patch+json");
 
-        //        //var response = await httpClient.PatchAsync($"api/ShoppingCart/{cartItemQtyUpdateDto.CartItemId}", content);
+                var response = await httpClient.PatchAsync($"api/ShoppingCart/{cartItemQtyUpdateDto.CartItemId}", content);
 
-        //        //if (response.IsSuccessStatusCode)
-        //        //{
-        //        //    return await response.Content.ReadFromJsonAsync<CartItemDto>();
-        //        //}
-        //        return null;
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadFromJsonAsync<CartItemDto>();
+                }
+                return null;
 
-        //    }
-        //    catch (Exception)
-        //    {
-        //        //Log exception
-        //        throw;
-        //    }
-        //}
-    }
+            }
+            catch (Exception)
+            {
+                //Log exception
+                throw;
+            }
+             }
+        }
 }

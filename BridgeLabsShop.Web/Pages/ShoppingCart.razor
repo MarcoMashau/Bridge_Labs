@@ -28,8 +28,11 @@ else
                         <div class="mb-4">@item.ProductDescription</div>
                         <span>
                             Price: <b>@(
-                    $"R{item.Price.ToString("0.00", new CultureInfo("en-ZA"))}"
-          )</b>
+                    $"R{item.Price.ToString("0.00", new CultureInfo("en-ZA"))}")</b>
+                      
+                        <input type="number" @bind="@item.Qty" /> 
+                        <button class="btn btn-info btn-sm"
+                            @onclick="(()=> UpdateQtyCartItem_Click(item.Id,item.Qty))">Update Quantity </button>
                         </span>
                         <div>
                             <button @onclick="( ()=> DeleteCartItem_Click(item.Id))" class="btn btn-danger sm">Remove</button>
@@ -46,7 +49,7 @@ else
             <div class="col-md-3">
                 <h5>Cart Summary</h5>
                 <div class="mt-2">
-                    <div>Total -  </div>
+                    <div>Total - (@TotalQuantity items)&nbsp;<b>@TotalPrice</b> </div>
                     <a href="#" class="btn btn-success">
 
                         <span class="oi oi-credit-card"></span> &nbsp; Proceed to Checkout

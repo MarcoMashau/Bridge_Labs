@@ -1,5 +1,7 @@
 ﻿using BridgeLabsShop.Models.Dtos;
 using BridgeLabsShop.Web.Sercices.Contracts;
+using BridgeLabsShop.Web.Services;
+using BridgeLabsShop.Web.Services.Contracts;
 //using BridgeLabsShop.Web.Services.Contracts;
 using Microsoft.AspNetCore.Components;
 namespace BridgeLabsShop.Web.Pages
@@ -14,13 +16,40 @@ namespace BridgeLabsShop.Web.Pages
         //WE MUST NOT FORGET TO register our ProductService class for dependency injection. Projet.cs
 
         [Inject]
-        public IProductService productService { get; set; }
+        public IProductService ProductService { get; set; }
+
+        [Inject]
+        public IShoppingCartService ShoppingCartService { get; set; }
+
+       // [Inject]
+        //public IManageProductsLocalStorageService ManageProductsLocalStorageService { get; set; }
+
+        [Inject]
+       // public IManageCartItemsLocalStorageService ManageCartItemsLocalStorageService { get; set; }
 
         public IEnumerable<ProductDto> Products { get; set; }
 
+        [Inject]
+        public NavigationManager NavigationManager { get; set; }
+
+        public string ErrorMessage { get; set; }
+
+
         protected override async Task OnInitializedAsync()
         {
-            Products = await productService.GetItems();
+            try
+            {
+                Products = await ProductService.GetItems();
+                var shoppingCartItems = await ShoppingCartService.GetItems(HardCoded.UserId);
+                var totalQty = shoppingCartItems.Sum(i => i.Qty);
+
+                ShoppingCartService.RaiseEventOnShoppingCartChanged(totalQty);
+            }
+            catch (Exception ex)
+            {
+                ErrorMessage = ex.Message;
+            }
+           
         }
 
         protected IOrderedEnumerable<IGrouping<int, ProductDto>> GetGroupedProductsByCategory()

@@ -10,9 +10,9 @@ namespace BridgeLabsShop.Web.Services
     public class ShoppingCartService : IShoppingCartService
     {
         private readonly HttpClient httpClient;
-
+         
         public event Action<int> OnShoppingCartChanged;
-
+         
         public ShoppingCartService(HttpClient httpClient)
         {
             this.httpClient = httpClient;
@@ -102,7 +102,6 @@ namespace BridgeLabsShop.Web.Services
                 OnShoppingCartChanged.Invoke(totalQty);
             }
         }
-
         public async Task<CartItemDto> UpdateQty(CartItemQtyUpdateDto cartItemQtyUpdateDto)
         {
             try
@@ -124,6 +123,6 @@ namespace BridgeLabsShop.Web.Services
                 //Log exception
                 throw;
             }
-             }
         }
+    }
 }

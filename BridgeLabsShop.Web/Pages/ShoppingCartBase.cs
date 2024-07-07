@@ -30,8 +30,7 @@ namespace BridgeLabsShop.Web.Pages
             try
             {
                 ShoppingCartItems = await ShoppingCartService.GetItems(HardCoded.UserId);
-               CalculateCartSummaryTotals();
-               // CartChanged();
+                CartChanged();
             }
             catch (Exception ex)
             {
@@ -44,8 +43,7 @@ namespace BridgeLabsShop.Web.Pages
             var cartItemDto = await ShoppingCartService.DeleteItem(id);
 
             await RemoveCartItem(id);
-           CalculateCartSummaryTotals();
-         //   CartChanged();
+            CartChanged();
 
         }
 
@@ -64,8 +62,7 @@ namespace BridgeLabsShop.Web.Pages
                     var returnedUpdateItemDto = await this.ShoppingCartService.UpdateQty(updateItemDto);
 
                     await UpdateItemTotalPrice(returnedUpdateItemDto);
-
-                   // CartChanged();
+                     CartChanged();
 
                    // await MakeUpdateQtyButtonVisible(id, false);
 
@@ -142,12 +139,11 @@ namespace BridgeLabsShop.Web.Pages
            // await ManageCartItemsLocalStorageService.SaveCollection(ShoppingCartItems);
 
         }
-        //    private void CartChanged()
-        //    {
-        //        CalculateCartSummaryTotals();
-        //        ShoppingCartService.RaiseEventOnShoppingCartChanged(TotalQuantity);
-        //    }
+        private void CartChanged()
+        {
+            CalculateCartSummaryTotals();
+            ShoppingCartService.RaiseEventOnShoppingCartChanged(TotalQuantity);
+        }
 
-        //}
     }
 }

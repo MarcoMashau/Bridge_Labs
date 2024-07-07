@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BridgeLabsShop.Web", "Bridg
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BridgeLabsShop.Api", "BridgeLabsShop.Api\BridgeLabsShop.Api.csproj", "{A582ABB0-FC82-43DE-BD1C-414BA0C5B8B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BridgeLabsShop.Models", "BridgeLabsShop.Models\BridgeLabsShop.Models.csproj", "{644F9466-2778-4899-8566-A16C6EA77459}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BridgeLabsShop.Models", "BridgeLabsShop.Models\BridgeLabsShop.Models.csproj", "{644F9466-2778-4899-8566-A16C6EA77459}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

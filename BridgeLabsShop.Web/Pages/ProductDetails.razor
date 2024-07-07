@@ -1,0 +1,58 @@
+﻿@page "/ProductDetails/{Id:int}"
+@inherits ProductDetailsBase
+
+@code {
+    private decimal price = 1234.56m; // Replace with your actual price value
+
+    // by default, the price will be converted looking at the regional pc in the computer, so this will defautl it to SA rand.
+    private string FormattedPrice
+    {
+        get
+        {
+            CultureInfo culture = new CultureInfo("en-ZA");
+            return price.ToString("C", culture);
+        }
+    }
+}
+
+
+
+@if (Product == null && ErrorMessage == null)
+{
+    <h3>Loading Product details, please wait...</h3>
+}
+else if (ErrorMessage != null)
+{
+    <DisplayError ErrorMessage="@ErrorMessage"></DisplayError>
+
+}
+else
+{
+<h3 class="mb-5">Product Details</h3>
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <img class="img-fluid" src="@Product.ImageURL">
+    </div>
+    <div class="col-md-6">
+        <h3>@Product.Name</h3>
+        <p class="mb-4">@Product.Description</p>
+        <p class="mb-4">
+            <b>
+                    @($"R{Product.Price.ToString("0.00", new CultureInfo("en-ZA"))}");(@Product.Qty items in stock)
+                 
+            </b>
+        </p>
+        <div>
+            <button class="btn btn-success"
+            @onclick="() => (AddToCart_Click(new CartItemToAddDto{
+                    CartId = HardCoded.CartId,
+                    ProductId = Product.Id,
+                    Qty = 1
+                }))">
+                <b>Add to Cart</b>
+            </button>
+        </div>
+    </div>
+
+</div>
+}

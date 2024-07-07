@@ -3,6 +3,7 @@ using BridgeLabsShop.Api.Repositories;
 using BridgeLabsShop.Api.Repositories.Contracts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Net.Http.Headers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,7 @@ builder.Services.AddDbContext<BridgeLabsShopDbContext>(options =>
 //registering our product repository class so we can use it for dep injection 
 
 builder.Services.AddScoped<IProductRepository,ProductRepository >();
+builder.Services.AddScoped<IShoppingCartRepository,ShoppingCartRepository >();
 
 
 
@@ -36,6 +38,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(policy =>
+policy.WithOrigins("http://localhost:7130", "https://localhost:7130")
+.AllowAnyMethod().WithHeaders(HeaderNames.ContentType));
 
 app.UseHttpsRedirection();
 

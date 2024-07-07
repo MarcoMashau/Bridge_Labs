@@ -17,8 +17,7 @@ namespace BridgeLabsShop.Models.Dtos
         public int ProductQty { get; set; }
         public decimal Price { get; set; }
         public decimal TotalPrice { get; set; }
-
-
+        public int Qty { get; set; }
 
 
     }

@@ -13,15 +13,15 @@ namespace BridgeLabsShop.Api.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IProductRepository productRepository;
-        public ProductController(IProductRepository productRepository) { 
-                this.productRepository = productRepository;
+        public ProductController(IProductRepository productRepository) {
+            this.productRepository = productRepository;
         }
 
         //an action method to get items and this gets its data from our Dto. 
         //but to obtain this, we need to createa project reference 
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProductDto>>> GetItems() 
+        public async Task<ActionResult<IEnumerable<ProductDto>>> GetItems()
         {
             try
             {
@@ -35,7 +35,31 @@ namespace BridgeLabsShop.Api.Controllers
                     // we can create a Linq , we can create an extension method to return an object of type ProductDTo to our action method 
 
 
-                    var productDto = products.ConvertToDto(productCategories);
+                    var productDtos = products.ConvertToDto(productCategories);
+                    return Ok(productDtos);
+                }
+
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong when making a connection to your Database");
+            }
+        }
+
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<ProductDto>> GetItem(int id)
+        {
+            try
+            {
+                var product = await this.productRepository.GetItem(id);
+
+                if (product == null) {
+                    return BadRequest(); }
+                else
+                {
+                    var productCategory = await this.productRepository.GetCategory(product.CategoryId);
+                    var productDto = product.ConvertToDto(productCategory);
                     return Ok(productDto);
                 }
 

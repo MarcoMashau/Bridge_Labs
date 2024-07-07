@@ -30,10 +30,19 @@ namespace BridgeLabsShop.Web.Pages
 
         protected string DisplayButtons { get; set; } = "block";
 
+        private async Task ReloadAfterDelay(int milliseconds)
+        {
+            await Task.Delay(milliseconds);
+            StateHasChanged();
+        }
+
+
+
         protected override async Task OnInitializedAsync()
         {
             try
             {
+            
                 ShoppingCartItems = await ShoppingCartService.GetItems(HardCoded.UserId);
 
                 if (ShoppingCartItems != null && ShoppingCartItems.Count() > 0)
@@ -47,12 +56,14 @@ namespace BridgeLabsShop.Web.Pages
                 }
                 else
                 {
+                
                     DisplayButtons = "none";
                 }
 
             }
             catch (Exception)
             {
+  
                 //Log exception
                 throw;
             }
@@ -64,14 +75,20 @@ namespace BridgeLabsShop.Web.Pages
             {
                 if (firstRender)
                 {
-                    await Js.InvokeVoidAsync("initPayPalButton");
+                   await Js.InvokeVoidAsync("initPayPalButton");
+                }
+                else {
+
+                    //await Js.InvokeVoidAsync("initPayPalButton");
                 }
             }
             catch (Exception)
             {
+                await Js.InvokeVoidAsync("initPayPalButton");
 
-                throw;
+                //throw;
             }
+            
         }
 
 

@@ -13,7 +13,7 @@ namespace BridgeLabsShop.Web.Pages
         [Inject]
         public IShoppingCartService ShoppingCartService { get; set; }
 
-        public IEnumerable<CartItemDto> ShoppingCartItems { get; set; }
+        public List<CartItemDto> ShoppingCartItems { get; set; }
 
         //    [Inject]
         //    public IManageCartItemsLocalStorageService ManageCartItemsLocalStorageService { get; set; }
@@ -38,14 +38,14 @@ namespace BridgeLabsShop.Web.Pages
                 ErrorMessage = ex.Message;
             }
         }
-        //    protected async Task DeleteCartItem_Click(int id)
-        //    {
-        //        var cartItemDto = await ShoppingCartService.DeleteItem(id);
+        protected async Task DeleteCartItem_Click(int id)
+        {
+            var cartItemDto = await ShoppingCartService.DeleteItem(id);
 
-        //        await RemoveCartItem(id);
-        //        CartChanged();
+            await RemoveCartItem(id);
+         //   CartChanged();
 
-        //    }
+        }
 
         //    protected async Task UpdateQtyCartItem_Click(int id, int qty)
         //    {
@@ -127,19 +127,19 @@ namespace BridgeLabsShop.Web.Pages
         //        TotalQuantity = this.ShoppingCartItems.Sum(p => p.Qty);
         //    }
 
-        //    private CartItemDto GetCartItem(int id)
-        //    {
-        //        return ShoppingCartItems.FirstOrDefault(i => i.Id == id);
-        //    }
-        //    private async Task RemoveCartItem(int id)
-        //    {
-        //        var cartItemDto = GetCartItem(id);
+        private CartItemDto GetCartItem(int id)
+        {
+            return ShoppingCartItems.FirstOrDefault(i => i.Id == id);
+        }
+        private async Task RemoveCartItem(int id)
+        {
+            var cartItemDto = GetCartItem(id);
 
-        //        ShoppingCartItems.Remove(cartItemDto);
+            ShoppingCartItems.Remove(cartItemDto);
 
-        //        await ManageCartItemsLocalStorageService.SaveCollection(ShoppingCartItems);
+           // await ManageCartItemsLocalStorageService.SaveCollection(ShoppingCartItems);
 
-        //    }
+        }
         //    private void CartChanged()
         //    {
         //        CalculateCartSummaryTotals();

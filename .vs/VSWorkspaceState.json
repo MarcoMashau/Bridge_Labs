@@ -2,8 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\ShopOnline.Api",
-    "\\ShopOnline.Api\\Entities"
+    "\\ShopOnline.Api\\Entities",
+    "\\ShopOnline.Web",
+    "\\ShopOnline.Web\\Shared"
   ],
-  "SelectedNode": "\\ShopOnline.Api\\Entities\\CartItem.cs",
+  "SelectedNode": "\\ShopOnlineSolution.sln",
   "PreviewInSolutionExplorer": false
 }

@@ -10,3 +10,15 @@ C:\Users\DMAHAU\Downloads\Bridge Labs - ShopOnline Final\ShopOnlineSolution-main
 C:\Users\DMAHAU\Downloads\Bridge Labs - ShopOnline Final\ShopOnlineSolution-main\ShopOnline.Models\obj\Debug\net6.0\refint\ShopOnline.Models.dll
 C:\Users\DMAHAU\Downloads\Bridge Labs - ShopOnline Final\ShopOnlineSolution-main\ShopOnline.Models\obj\Debug\net6.0\ShopOnline.Models.pdb
 C:\Users\DMAHAU\Downloads\Bridge Labs - ShopOnline Final\ShopOnlineSolution-main\ShopOnline.Models\obj\Debug\net6.0\ref\ShopOnline.Models.dll
+C:\repo\Bridge_Labs\ShopOnline.Models\bin\Debug\net6.0\ShopOnline.Models.deps.json
+C:\repo\Bridge_Labs\ShopOnline.Models\bin\Debug\net6.0\ShopOnline.Models.dll
+C:\repo\Bridge_Labs\ShopOnline.Models\bin\Debug\net6.0\ShopOnline.Models.pdb
+C:\repo\Bridge_Labs\ShopOnline.Models\obj\Debug\net6.0\ShopOnline.Models.csproj.AssemblyReference.cache
+C:\repo\Bridge_Labs\ShopOnline.Models\obj\Debug\net6.0\ShopOnline.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\repo\Bridge_Labs\ShopOnline.Models\obj\Debug\net6.0\ShopOnline.Models.AssemblyInfoInputs.cache
+C:\repo\Bridge_Labs\ShopOnline.Models\obj\Debug\net6.0\ShopOnline.Models.AssemblyInfo.cs
+C:\repo\Bridge_Labs\ShopOnline.Models\obj\Debug\net6.0\ShopOnline.Models.csproj.CoreCompileInputs.cache
+C:\repo\Bridge_Labs\ShopOnline.Models\obj\Debug\net6.0\ShopOnline.Models.dll
+C:\repo\Bridge_Labs\ShopOnline.Models\obj\Debug\net6.0\refint\ShopOnline.Models.dll
+C:\repo\Bridge_Labs\ShopOnline.Models\obj\Debug\net6.0\ShopOnline.Models.pdb
+C:\repo\Bridge_Labs\ShopOnline.Models\obj\Debug\net6.0\ref\ShopOnline.Models.dll

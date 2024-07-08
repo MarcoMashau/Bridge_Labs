@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\ShopOnline.Api",
+    "\\ShopOnline.Api\\Entities"
   ],
-  "SelectedNode": "\\Bridge_Labs.sln",
+  "SelectedNode": "\\ShopOnline.Api\\Entities\\CartItem.cs",
   "PreviewInSolutionExplorer": false
 }
